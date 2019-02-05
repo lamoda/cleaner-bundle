@@ -1,0 +1,24 @@
+services:
+    _defaults:
+        autowire: true
+        public: true
+
+    Lamoda\Cleaner\DB\Config\DBCleanerConfigFactory: ~
+
+    custom_cleaner_config:
+        class: Lamoda\Cleaner\DB\Config\DBCleanerConfig
+        factory: 'Lamoda\Cleaner\DB\Config\DBCleanerConfigFactory:create'
+        arguments:
+            - query: SELECT 'custom'
+
+    custom_cleaner:
+        class: Lamoda\Cleaner\DB\DoctrineDBALCleaner
+        arguments:
+            $config: '@custom_cleaner_config'
+        tags:
+            - { name: 'lamoda_cleaner.db', alias: 'custom' }
+
+    test.lamoda_cleaner.db: '@lamoda_cleaner.db'
+    test.lamoda_cleaner.db.custom: '@lamoda_cleaner.db.custom'
+
+    test.monolog.handler.main: '@monolog.handler.main'

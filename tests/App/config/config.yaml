@@ -1,0 +1,17 @@
+parameters:
+    kernel.secret: secret
+
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver: pdo_sqlite
+                memory: true
+                logging: true
+                profiling: false
+
+monolog:
+    handlers:
+        main:
+            type: test

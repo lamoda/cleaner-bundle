@@ -1,0 +1,18 @@
+lamoda_cleaner:
+    db:
+        dummy:
+            transactional: false
+            query: SELECT 'dummy'
+        dummy2:
+            transactional: false
+            query: SELECT 'dummy2'
+
+services:
+    _defaults:
+        public: true
+
+    test.lamoda_cleaner.db: '@lamoda_cleaner.db'
+    test.lamoda_cleaner.db.dummy: '@lamoda_cleaner.db.dummy'
+    test.lamoda_cleaner.db.dummy.config: '@lamoda_cleaner.db.dummy.config'
+
+    test.monolog.handler.main: '@monolog.handler.main'

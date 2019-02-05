@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    lamoda_cleaner.clear_command:
+        class: Lamoda\CleanerBundle\Command\ClearCommand
+        arguments:
+            $container: '@lamoda_cleaner.cleaner_locator'
+        tags: ['console.command']
