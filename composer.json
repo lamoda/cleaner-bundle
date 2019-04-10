@@ -2,6 +2,12 @@
     "name": "lamoda/cleaner-bundle",
     "description": "Symfony bundle for lamoda/cleaner library",
     "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Lamoda developers",
+            "homepage": "https://tech.lamoda.ru/"
+        }
+    ],
     "require": {
         "php": "^7.1",
         "lamoda/cleaner": "*",
