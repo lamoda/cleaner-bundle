@@ -14,8 +14,8 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('lamoda_cleaner');
 
-        // root() method for compatibility between 4.1 -> 4.2
-        $treeBuilder->root('lamoda_cleaner')
+        $root = $treeBuilder->getRootNode();
+        $root
             ->children()
                 ->arrayNode('db')
                     ->useAttributeAsKey('name')
