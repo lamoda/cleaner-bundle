@@ -12,10 +12,16 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('lamoda_cleaner');
+        $builder = new TreeBuilder('lamoda_cleaner');
 
-        // root() method for compatibility between 4.1 -> 4.2
-        $treeBuilder->root('lamoda_cleaner')
+        if (method_exists($builder, 'getRootNode')) {
+            $root = $builder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $root = $builder->root('lamoda_cleaner');
+        }
+
+        $root
             ->children()
                 ->arrayNode('db')
                     ->useAttributeAsKey('name')
@@ -80,6 +86,6 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end();
 
-        return $treeBuilder;
+        return $builder;
     }
 }
