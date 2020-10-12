@@ -30,7 +30,7 @@ class ClearCommand extends Command
             ->addArgument('cleaner', InputArgument::OPTIONAL, 'Cleaner name');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $groupName = $input->getArgument('group');
         $cleanerName = $input->getArgument('cleaner');
@@ -42,5 +42,7 @@ class ClearCommand extends Command
 
         $cleaner = $this->container->get($serviceName);
         $cleaner->clear();
+
+        return 0;
     }
 }
