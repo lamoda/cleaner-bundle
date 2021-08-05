@@ -23,7 +23,7 @@ class ClearCommandTest extends KernelTestCase
     /** @var TestHandler */
     private $logHandler;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
