@@ -6,6 +6,15 @@ build:
                   file: build/clover.xml
                   format: clover
 
+    environment:
+        php:
+            version: 7.2
+        variables:
+            XDEBUG_MODE: 'coverage'
+    dependencies:
+        after:
+            - composer require --dev "squizlabs/php_codesniffer=^3.6.0"
+
 filter:
     excluded_paths:
         - tests/*
